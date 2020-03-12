@@ -52,7 +52,7 @@ Biblioteca::Biblioteca(int cL){
         libros[i]=100000+i;
         prestado[i]=0;
     }
-}
+}//constructor que inicializa la canidad de libros
 
 Biblioteca::Biblioteca(const Biblioteca& original){
     cantidadLibros=original.cantidadLibros;
@@ -62,7 +62,7 @@ Biblioteca::Biblioteca(const Biblioteca& original){
         libros[i]=original.libros[i];
         prestado[i]=0;
     }
-}
+}//constructor de copia
 
 Biblioteca::~Biblioteca(){
     delete[] libros;
@@ -81,7 +81,7 @@ void Biblioteca::prestar(int libro){
 		cout<<"libro "<<libro<<" prestado"<<endl;
 		prestado[index]=1;//el error es que estaba indicando 0 en vez de 1
 	}
-}
+}//método prestar
 
 void Biblioteca::devolver(int libro){
     int index=busquedaOrdenada2(libros, cantidadLibros, libro, 3);
