@@ -8,6 +8,7 @@ class Valores{
     public:
     int *a;
     int size;
+    int index = 0;
 
     Valores(int tam){
         size = tam;
