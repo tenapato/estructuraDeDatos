@@ -40,7 +40,6 @@ int busquedaAux(int *a, int inicio, int fin, int buscando){
 
 
 
-
 int busquedaOrdenada2(int *a, int size, int buscado, int paso){//metdodo que busca cada n numeros
     
     if(size%paso !=0){
