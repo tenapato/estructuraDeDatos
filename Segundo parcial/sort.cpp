@@ -78,34 +78,112 @@ class InsertionSort: public Sort<T>{
 template <class T>
 class MergeSort: public Sort<T>{
 	public:
-    void sort(T *a, int size){
+	void sort(T *a, int size){
+        sortAux(a, 0, size-1);
+	}
 
+    private:
+    void sortAux(T *a, int inicio, int fin){
+        if(inicio>=fin){
+            return;
+        }
+        int medio = (fin+inicio)/2;
+        sortAux(a, inicio, medio);
+        sortAux(a, medio+1, fin);
+        merge(a,inicio, medio, fin);
     }
+
+
 	void merge(T *a, int inicio, int medio, int fin){
-        int tamIzq = medio-inicio+1;
-        int tamDer=fin-medio;
-        //crear arreglos para copiar
-        T copiaIzq[tamIzq];
-        T copiaDer[tamDer];
-        //Copiar los elementos
-        for(int i =inicio; i<tamIzq+inicio; i++){
-            copiaIzq[i]=a[i];
-        }
-    
-      for(int i =medio+1; i<tamDer; i++){
-            copiaDer[i]=a[i];
-        }
-        //Inidces
-        int I=0;
-        int D=0;
-        //Comparaciones
+		//Tam de la copia
+		int tamIzq=medio-inicio+1;
+		int tamDer=fin-medio;
 
-    }
-
-
+		//Crear espacio para copia
+		T *copiaIzq=new T[tamIzq]();
+		T *copiaDer=new T[tamDer]();
+		//Copiando los elementos
+		for(int i=0; i<tamIzq; i++){
+			copiaIzq[i]=a[inicio+i];
+		}
+		for(int i=0; i<tamDer; i++){
+			copiaDer[i]=a[medio+1+i];
+		}
+		//Indices
+		int I=0;
+		int D=0;
+		int x=inicio;
+		//Comparaciones
+		while(I<tamIzq&&D<tamDer){
+			if(copiaIzq[I]<copiaDer[D]){
+				a[x]=copiaIzq[I];
+				I++;
+			}else{
+				a[x]=copiaDer[D];
+				D++;
+			}
+			x++;
+		}
+		if(I==tamIzq){
+			while(D<tamDer){
+				a[x]=copiaDer[D];
+				D++;
+				x++;
+			}
+		}else{
+			while(I<tamIzq){
+				a[x]=copiaIzq[I];
+				I++;
+				x++;
+			}
+		}	
+	}
 };
 
-int main(){
+
+
+
+
+
+template <class T>
+class QuickSort: public Sort<T>{
+	public:
+	void sort(T *a, int size){
+		sortAux(a, 0, size-1);
+	}
+	
+	private:
+	void sortAux(T *a, int inicio, int fin){
+		if(fin<=inicio){
+			return;
+		}
+		int v=partition(a, inicio, fin);
+		sortAux(a, inicio, v-1);
+		sortAux(a, v+1, fin);
+	}
+	
+	int partition(T *a, int inicio, int fin){
+		int v=inicio;
+		int lo=v+1;
+		int hi=fin;
+		while(true){
+			while(a[lo]<a[v] && lo<=fin){
+				lo++;
+			}
+			while(a[hi]>a[v]&&hi>=inicio){
+				hi--;
+			}
+			if(lo>=hi){
+				break;
+			}
+			this->intercambiar(a, lo,hi);
+		}
+		this->intercambiar(a, v, hi);
+		return hi;
+	}
+};
+
+/*int main(){
     int size = 5;
     int a[size]={5,4,3,2,1};
     LuckySort<int> s;
@@ -124,5 +202,14 @@ int main(){
 	is.sort(a, size);
 	is.imprimirArreglo(a,size);
 
+    MergeSort<int> ms;
+	ms.imprimirArreglo(a, size);
+	ms.sort(a, size);
+	ms.imprimirArreglo(a,size);
+
+	QuickSort<int> qs;
+	qs.imprimirArreglo(a, size);
+	qs.sort(a, size);
+	qs.imprimirArreglo(a,size);
     return 0;
-}
+} */
