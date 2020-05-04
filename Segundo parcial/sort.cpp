@@ -17,6 +17,7 @@ class Sort{
     void imprimirArreglo(T *a, int size){
         cout<<a[0];
         for(int i=1;i<size;i++){
+
             cout<<", "<<a[i];
         }
         cout<<endl;
@@ -52,7 +53,24 @@ template <class T>
 class BubbleSort: public Sort<T>{
 	public:
 	void sort(T *a, int size){
-    }
+		int it=0;
+		for(int i=0; i<size-1; i++){
+			//cout<<i<<endl;
+			bool ordenado=true;
+			for(int j=0; j<size-1-i; j++){
+				it++;
+				if(a[j]>a[j+1]){
+					this->intercambiar(a, j+1, j);
+					ordenado=false;
+				}
+				
+			}
+			if(ordenado==true){
+				break;
+			}
+		}
+		cout<<"vueltas: "<<it<<endl;
+	}
 };
 
 template <class T>
@@ -160,12 +178,25 @@ class QuickSort: public Sort<T>{
 		int v=partition(a, inicio, fin);
 		sortAux(a, inicio, v-1);
 		sortAux(a, v+1, fin);
+		cout<<v<<endl;
+		//cout<<"Llamada :"<<llamada<<endl;
+				for(int i=0; i<7;i++){
+					cout<<a[i]<<",";
+				}
+				cout<<endl;
+				cout<<"v:"<<v<<endl;
+				cout<<"inicio:"<<inicio<<endl;
+				cout<<"fin:"<<fin<<endl;
+				//cout<<"lo:"<<lo<<endl;
+				//cout<<"hi:"<<hi<<endl;
+
 	}
 	
 	int partition(T *a, int inicio, int fin){
 		int v=inicio;
 		int lo=v+1;
 		int hi=fin;
+		int llamada = 0;
 		while(true){
 			while(a[lo]<a[v] && lo<=fin){
 				lo++;
@@ -174,6 +205,9 @@ class QuickSort: public Sort<T>{
 				hi--;
 			}
 			if(lo>=hi){
+
+				
+
 				break;
 			}
 			this->intercambiar(a, lo,hi);
@@ -183,9 +217,13 @@ class QuickSort: public Sort<T>{
 	}
 };
 
-/*int main(){
-    int size = 5;
-    int a[size]={5,4,3,2,1};
+/*
+int main(){
+	
+    int size = 7;
+    int a[size]={16,17,8,1,12,18,15};
+
+	
     LuckySort<int> s;
     s.imprimirArreglo(a, size);
 	s.sort(a, size);
@@ -211,5 +249,10 @@ class QuickSort: public Sort<T>{
 	qs.imprimirArreglo(a, size);
 	qs.sort(a, size);
 	qs.imprimirArreglo(a,size);
-    return 0;
-} */
+
+	QuickSort<int> bs;
+	bs.imprimirArreglo(a,size);
+	bs.sort(a,size);
+	bs.imprimirArreglo(a,size);
+    return 0; 
+}   */
