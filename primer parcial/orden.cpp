@@ -51,7 +51,9 @@ int busquedaBinaria(int *a, int inicio, int fin, int buscado){
     }
 
     int medio = (fin+inicio)/2;
+    cout<<medio<<endl;
     if(buscado==a[medio]){
+         
         return medio;
     }
     else if(buscado<a[medio]){
@@ -59,16 +61,19 @@ int busquedaBinaria(int *a, int inicio, int fin, int buscado){
     }
     else{
         busquedaBinaria(a, medio+1, fin, buscado);
+       cout<<medio<<endl;
+     cout<<fin<<endl;
     }
 }
 
 
 int main(){
     int size=7;
-    int a[size]={1,3,5,7,9,11,13};
+    int a[size]={1,8,12,15,16,17,18};
    
-    cout<<busquedaOrdenada2(a,size,11,2)<<endl;
+    //cout<<busquedaOrdenada2(a,size,11,2)<<endl;
 
+/*
     auto inicialTiempo = high_resolution_clock::now();
     cout<<busquedaBinaria(a, 0, size-1, 3)<<endl;
     auto fintiempo = high_resolution_clock::now();
@@ -76,5 +81,9 @@ int main(){
     auto duracion=duration_cast<seconds>(fintiempo-inicialTiempo).count();
 
     cout<<duracion<<endl;
+    */
+
+   busquedaBinaria(a,0,size-1,10);
+
     return 0;
 }
