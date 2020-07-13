@@ -1,6 +1,9 @@
 #include <iostream>
 
-using namespace std;
+/* -------------------------------------Esto es una PILA------------------------------------------------------------ */
+
+
+using namespace std;-
 
 template <class T>
 class Nodo{

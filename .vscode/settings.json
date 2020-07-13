@@ -38,6 +38,17 @@
         "xstddef": "cpp",
         "xtr1common": "cpp",
         "chrono": "cpp",
-        "ratio": "cpp"
+        "ratio": "cpp",
+        "vector": "cpp",
+        "set": "cpp",
+        "xhash": "cpp",
+        "unordered_map": "cpp",
+        "list": "cpp",
+        "deque": "cpp",
+        "queue": "cpp",
+        "stack": "cpp",
+        "xtree": "cpp",
+        "unordered_set": "cpp",
+        "map": "cpp"
     }
 }

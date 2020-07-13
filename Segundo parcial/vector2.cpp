@@ -62,18 +62,7 @@ class Vector{
 			}
 		}
 		
-		T getElemento(int posicion){
-			if(posicion<count){
-				return a[posicion];
-			}
-			return NULL;
-		}
-		T operator[](int posicion){
-			if(posicion<count){
-				return a[posicion];
-			}
-			return NULL;
-		}
+		
 		
 		void imprimir(){
 			for(int i=0; i<count; i++){
